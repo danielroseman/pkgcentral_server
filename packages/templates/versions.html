@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% block content %}
+<h1>Version differences between {{ source.name }} and {{ comparator.name }}</h1>
+
+<table>
+<thead>
+		<tr>
+				<th>Name</th><th>{{ source.name }}</th><th>{{ comparator.name }}</th>
+		</tr>
+</thead>
+{% for package, versions in packages %}
+<tr>
+		<td>{{ package}}</td>
+		<td>{{ versions.0 }}</td>
+		<td>{{ versions.1 }}</td>
+</tr>
+{% endfor %}
+</table>
+
+<p><a href="{% url version_compare comparator.name, source.name %}">Swap source and comparator</a></p>
+{% endblock %}
+

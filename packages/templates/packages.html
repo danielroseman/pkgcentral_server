@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+{% block content %}
+<h1>Package/version combinations on {{ source.name }} but not on {{ comparator.name }}</h1>
+
+<ul>
+{% for package in packages %}
+<li>{{ package }}</li>
+{% endfor %}
+</ul>
+
+<p><a href="{% url host_compare comparator.name, source.name %}">Swap source and comparator</a></p>
+{% endblock %}
